@@ -30,9 +30,9 @@ This solution dynamically adds a button to a tooltip (modal-like popup) in an Or
    l_host varchar2(400) := 'https://<host>.adb.us-ashburn-1.oraclecloudapps.com'; 
     -- format: https://<guid>-<adb-name>.adb.<region>.oraclecloudapps.com
     -- define the target page number for redirection
-    l_page_number number := **null**; -- CHANGE PAGE NUMBER. Ex:2
+    l_page_number number := NULL; -- CHANGE PAGE NUMBER. Ex:2
     -- define the page item that will receive the primary key value on target page
-    l_page_item varchar(100) := **null**; --CHANGE PAGE ITEM. Ex: 'P2_EMPLOYEE_ID'
+    l_page_item varchar(100) := NULL; --CHANGE PAGE ITEM. Ex: 'P2_EMPLOYEE_ID'
    ```
 4. Ensure you create an **AJAX callback process** in APEX with the name **matching** the `ajaxCallback` value above. This will handle incoming requests and process the extracted tooltip data.
 5. Adjust the `toolTipQuerySelector` variable if the tooltip selector in your APEX instance is different.
