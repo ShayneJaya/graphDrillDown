@@ -23,7 +23,9 @@ This solution dynamically adds a button to a tooltip (modal-like popup) in an Or
    const keyIdentifier = "EMPLOYEE_ID"; 
    
    // reference the name of the apex ajax callback process that will handle the request
-   const ajaxCallback = "REDIRECT_USER";  
+   const ajaxCallback = "REDIRECT_USER";
+   // (optional) change button label and title
+   const buttonTitle = "Drill Down - View Details";
    ```
 3. Modify the following varaibles in the AJAX call to match your APEX setup:
    ```sql
