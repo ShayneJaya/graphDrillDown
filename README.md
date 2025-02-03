@@ -15,8 +15,7 @@ This solution dynamically adds a button to a tooltip (modal-like popup) in an Or
 ## Installation & Configuration
 1. **Include the JavaScript file** in your Oracle APEX page (or insert the script into the page inline).
 2. Modify the following constants in the script to match your APEX setup:
-
-   ```javascript
+       ```javascript
    // define the icon class for the button
    const iconClass = "oj-ux-ico-arrow-circle-down"; 
    
@@ -26,9 +25,17 @@ This solution dynamically adds a button to a tooltip (modal-like popup) in an Or
    // reference the name of the apex ajax callback process that will handle the request
    const ajaxCallback = "REDIRECT_USER";  
    ```
-
-3. Ensure you create an **AJAX callback process** in APEX with the name **matching** the `ajaxCallback` value above. This will handle incoming requests and process the extracted tooltip data.
-4. Adjust the `toolTipQuerySelector` variable if the tooltip selector in your APEX instance is different.
+3. Modify the following varaibles in the AJAX call to match your APEX setup:
+   ```plsql
+   l_host varchar2(400) := 'https://<host>.adb.us-ashburn-1.oraclecloudapps.com'; 
+    -- format: https://<guid>-<adb-name>.adb.<region>.oraclecloudapps.com
+    -- define the target page number for redirection
+    l_page_number number := null; -- CHANGE PAGE NUMBER. Ex:2
+    -- define the page item that will receive the primary key value on target page
+    l_page_item varchar(100) := null; --CHANGE PAGE ITEM. Ex: 'P2_EMPLOYEE_ID'
+   ```
+4. Ensure you create an **AJAX callback process** in APEX with the name **matching** the `ajaxCallback` value above. This will handle incoming requests and process the extracted tooltip data.
+5. Adjust the `toolTipQuerySelector` variable if the tooltip selector in your APEX instance is different.
 
 ## How It Works
 1. The **MutationObserver** detects when the tooltip appears in the DOM.
