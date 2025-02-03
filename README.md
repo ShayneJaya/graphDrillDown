@@ -1,4 +1,4 @@
-# Tooltip Button with AJAX Integration
+# Tooltip Button Drill Down with AJAX Integration
 
 ## Overview
 This solution dynamically adds a button to a tooltip (modal-like popup) in an Oracle APEX application. When clicked, the button extracts a specific value from the tooltip content and sends it to an APEX AJAX process, which redirects the user to a new page.
