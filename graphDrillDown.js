@@ -28,7 +28,7 @@ function createButton() {
   button.classList.add('oj-button', 'normal', 'oj-button-half-chrome', 'oj-button-icon-only', 'oj-complete', 'svelte-16rn59g', 'oj-default', 'oj-enabled');
   // define the inner html structure with an icon
   button.innerHTML = `
-    <button class="oj-button-button" aria-label="my button">
+    <button class="oj-button-button" aria-label="Drill Down - View Details" title="Drill Down - View Details">
       <div class="oj-button-label">
         <span class="oj-button-icon oj-start oj-ux-icon ${iconClass}"></span>
       </div>
