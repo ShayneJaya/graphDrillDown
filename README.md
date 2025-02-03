@@ -15,7 +15,7 @@ This solution dynamically adds a button to a tooltip (modal-like popup) in an Or
 ## Installation & Configuration
 1. **Include the JavaScript file** in your Oracle APEX page (or insert the script into the page inline).
 2. Modify the following constants in the script to match your APEX setup:
-       ```javascript
+   ```javascript
    // define the icon class for the button
    const iconClass = "oj-ux-ico-arrow-circle-down"; 
    
