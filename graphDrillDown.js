@@ -1,11 +1,13 @@
 // global variable declaration
 // define the icon class to be used for the button icon
-// change the value to customize the icon (reference: https://static.oracle.com/cdn/fnd/gallery/2507.0.0/images/preview/index.html)
+// change the value to customize the icon (reference: oracle icon gallery)
 const iconClass = "oj-ux-ico-arrow-circle-down"; 
 // define the key identifier for extracting the required value from the tooltip. What element will the getKeyValue search for?
 const keyIdentifier = "EMPLOYEE_ID"; 
 // reference the name of the apex ajax callback process that will handle the request
-const ajaxCallback = "REDIRECT_USER"; 
+const ajaxCallback = "REDIRECT_USER";
+// button label and title
+const buttonTitle = "Drill Down - View Details";
 // (leave unchanged) selector string to identify the tooltip modal in the DOM
 const toolTipQuerySelector = 'section.ovis.oj-popup.svelte-1wc7iob';
 // function to add a button to the tooltip footer
@@ -28,7 +30,7 @@ function createButton() {
   button.classList.add('oj-button', 'normal', 'oj-button-half-chrome', 'oj-button-icon-only', 'oj-complete', 'svelte-16rn59g', 'oj-default', 'oj-enabled');
   // define the inner html structure with an icon
   button.innerHTML = `
-    <button class="oj-button-button" aria-label="Drill Down - View Details" title="Drill Down - View Details">
+    <button class="oj-button-button" aria-label="${buttonTitle}" title="${buttonTitle}">
       <div class="oj-button-label">
         <span class="oj-button-icon oj-start oj-ux-icon ${iconClass}"></span>
       </div>
@@ -47,7 +49,7 @@ async function handleButtonClick(toolTip) {
     {
         type:       "error",
         location:   [ "page"],
-        message:    `Key "${keyIdentifier}" not found in tooltip.`,
+        message:    `Key "${keyIdentifier}" not found in tooltip.  Ensure it is declared in the keyIdentifier constant.`,
         unsafe:     false
     }
     ] );
