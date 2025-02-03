@@ -37,53 +37,8 @@ This solution dynamically adds a button to a tooltip (modal-like popup) in an Or
 4. The server processes the request and responds with a redirection URL.
 5. If successful, the user is redirected; if an error occurs, it is displayed on the page.
 
-## Error Handling
-- Errors during the AJAX request are logged in the console.
-- If an error occurs, an APEX error message is displayed using:
-  
-  ```javascript
-  apex.message.showErrors([
-    {
-        type: "error",
-        location: ["page"],
-        message: "An error occurred during the AJAX request.",
-        unsafe: false
-    }
-  ]);
-  ```
-
 - The PL/SQL process also returns an error message in JSON format if something goes wrong on the server side.
 
-## PL/SQL AJAX Callback Example
-The following example shows how the AJAX process should be implemented in Oracle APEX:
-
-```plsql
-DECLARE
-    l_PK VARCHAR2(1000) := APEX_APPLICATION.G_X01; -- holds the value from source to send to new page
-    l_url VARCHAR2(32767);
-    l_host VARCHAR2(400) := 'https://<host>.adb.us-ashburn-1.oraclecloudapps.com'; -- base URL for redirection
-    l_page_number NUMBER := 2; 
-    l_page_item VARCHAR(100) := 'P2_EMPLOYEE_ID'; -- page item to set on target page
-BEGIN
-    l_url := APEX_UTIL.PREPARE_URL(
-        p_url => 'f?p=&APP_ID.:' || l_page_number || ':&APP_SESSION.::NO::' || l_page_item || ':' || l_PK,
-        p_checksum_type => 'SESSION'
-    );
-    l_url := l_host || l_url;
-    
-    -- return the generated URL to the JavaScript client
-    apex_json.open_object;
-    apex_json.write('url', l_url);
-    apex_json.close_object;
-
-EXCEPTION 
-    WHEN OTHERS THEN
-        apex_debug.message('Error!');
-        apex_json.open_object;
-        apex_json.write('error', 'An error occurred: ' || SQLERRM);
-        apex_json.close_object;
-END;
-```
 
 ## Notes
 - Ensure the `ajaxCallback` name matches the APEX AJAX process.
