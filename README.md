@@ -43,8 +43,7 @@ This solution dynamically adds a button to a tooltip (modal-like popup) in an Or
 3. Clicking the button triggers an AJAX request, sending the extracted value (`keyIdentifier`) to the server.
 4. The server processes the request and responds with a redirection URL.
 5. If successful, the user is redirected; if an error occurs, it is displayed on the page.
-
-- The PL/SQL process also returns an error message in JSON format if something goes wrong on the server side.
+6. The PL/SQL process also returns an error message in JSON format if something goes wrong on the server side.
 
 
 ## Notes
@@ -52,5 +51,6 @@ This solution dynamically adds a button to a tooltip (modal-like popup) in an Or
 - Update `keyIdentifier` to match the data label in your tooltip.
 - Modify the `iconClass` to change the button's appearance.
 - The tooltip selector (`toolTipQuerySelector`) should match your APEX implementation.
+- Change variable declarations inside of the AJAX callback.
 
 
